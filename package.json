@@ -1,0 +1,14 @@
+{
+  "name": "mikeltools",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node symbiose-mobilite/build.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "nodemailer": "6.10.1"
+  }
+}

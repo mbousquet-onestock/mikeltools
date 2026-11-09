@@ -39,7 +39,7 @@ cd public && python3 -m http.server 8000
 Le projet est prêt pour Vercel : `vercel.json` (build, redirections, en-têtes de sécurité, cache) et `api/envoi.js` (envoi des formulaires par SMTP, en remplacement du script PHP).
 
 1. Sur [vercel.com/new](https://vercel.com/new), importer le dépôt GitHub `mbousquet-onestock/mikeltools`.
-2. **Root Directory** : `symbiose-mobilite` (le reste est lu dans `vercel.json`, ne rien changer d’autre).
+2. **Root Directory** : laisser la racine du dépôt (configuration dans `vercel.json` et `api/` à la racine) ou choisir `symbiose-mobilite` : les deux fonctionnent. Si vous modifiez les redirections ou en-têtes, mettez à jour les deux fichiers `vercel.json`.
 3. **Environment Variables** (pour les formulaires) :
 
    | Variable | Valeur |
