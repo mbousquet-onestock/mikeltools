@@ -1,0 +1,176 @@
+{
+ "mobilite-professionnelle-nouveau-depart": {
+  "w": 643,
+  "h": 750,
+  "widths": [
+   480,
+   643
+  ]
+ },
+ "enquete-satisfaction": {
+  "w": 643,
+  "h": 750,
+  "widths": [
+   480,
+   643
+  ]
+ },
+ "relocation-couple-nouveau-logement": {
+  "w": 1500,
+  "h": 1000,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "demarches-administratives-signature": {
+  "w": 1500,
+  "h": 1000,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "recherche-logement-sur-mesure": {
+  "w": 740,
+  "h": 517,
+  "widths": [
+   480,
+   740
+  ]
+ },
+ "installation-demenagement": {
+  "w": 740,
+  "h": 544,
+  "widths": [
+   480,
+   740
+  ]
+ },
+ "aide-installation-famille-ecole": {
+  "w": 748,
+  "h": 556,
+  "widths": [
+   480,
+   748
+  ]
+ },
+ "valeur-esprit-equipe": {
+  "w": 500,
+  "h": 500,
+  "widths": [
+   480,
+   500
+  ]
+ },
+ "valeur-proximite": {
+  "w": 500,
+  "h": 500,
+  "widths": [
+   480,
+   500
+  ]
+ },
+ "valeur-exigence": {
+  "w": 500,
+  "h": 500,
+  "widths": [
+   480,
+   500
+  ]
+ },
+ "valeur-sens-du-service": {
+  "w": 500,
+  "h": 500,
+  "widths": [
+   480,
+   500
+  ]
+ },
+ "recrutement-projet-entreprise": {
+  "w": 1500,
+  "h": 844,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "recrutement-strategie-sur-mesure": {
+  "w": 1500,
+  "h": 1001,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "recrutement-entretien-candidat": {
+  "w": 1500,
+  "h": 1001,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "recrutement-integration-collaborateur": {
+  "w": 1500,
+  "h": 1000,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "impatriation-visa-autorisation-travail": {
+  "w": 1500,
+  "h": 1000,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "impatriation-titre-de-sejour": {
+  "w": 1500,
+  "h": 966,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "impatriation-demarches-administratives": {
+  "w": 1500,
+  "h": 1000,
+  "widths": [
+   480,
+   960,
+   1440
+  ]
+ },
+ "team/mikel-barthelemy": {
+  "w": 234,
+  "h": 268,
+  "widths": [
+   234
+  ]
+ },
+ "team/marion-vincent": {
+  "w": 234,
+  "h": 268,
+  "widths": [
+   234
+  ]
+ },
+ "team/elidion-keta": {
+  "w": 234,
+  "h": 268,
+  "widths": [
+   234
+  ]
+ }
+}

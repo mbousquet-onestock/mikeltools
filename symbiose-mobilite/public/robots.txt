@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /merci/
+Disallow: /erreur/
+Disallow: /envoi.php
+
+Sitemap: https://symbiose-mobilite.com/sitemap.xml
