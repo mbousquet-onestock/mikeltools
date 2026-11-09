@@ -2,6 +2,7 @@
 document.documentElement.classList.add("js");
 
 document.addEventListener("DOMContentLoaded", () => {
+  initAccessibilityTools();
   // Menu mobile
   const toggle = document.querySelector(".menu-toggle");
   const nav = document.getElementById("menu-principal");
@@ -87,3 +88,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+// Outils d'accessibilité : taille du texte, contrastes, police lisible, espacement, animations.
+function initAccessibilityTools() {
+  const root = document.documentElement;
+  const box = document.getElementById("a11y");
+  if (!box) return;
+  const toggle = box.querySelector(".a11y__toggle");
+  const panel = document.getElementById("a11y-panel");
+  const output = document.getElementById("a11y-size-value");
+  const SIZES = [90, 100, 112, 125, 150, 175, 200];
+  const EXCLUSIVE = ["contrast", "invert", "light"]; // un seul mode de couleurs à la fois
+
+  let state = { size: 100, on: [] };
+  try { state = { ...state, ...JSON.parse(localStorage.getItem("a11y") || "{}") }; } catch (e) {}
+
+  const save = () => { try { localStorage.setItem("a11y", JSON.stringify(state)); } catch (e) {} };
+  const apply = () => {
+    if (state.size === 100) root.removeAttribute("data-a11y-size");
+    else root.setAttribute("data-a11y-size", String(state.size));
+    root.classList.toggle("a11y-large", state.size >= 150);
+    box.querySelectorAll("[data-a11y-toggle]").forEach((btn) => {
+      const k = btn.dataset.a11yToggle;
+      const on = state.on.includes(k);
+      root.classList.toggle("a11y-" + k, on);
+      btn.setAttribute("aria-pressed", String(on));
+    });
+    output.textContent = state.size + " %";
+    // aria-disabled plutôt que disabled : le bouton garde le focus clavier
+    box.querySelector('[data-a11y="smaller"]').setAttribute("aria-disabled", String(state.size === SIZES[0]));
+    box.querySelector('[data-a11y="bigger"]').setAttribute("aria-disabled", String(state.size === SIZES.at(-1)));
+    toggle.classList.toggle("is-active", state.size !== 100 || state.on.length > 0);
+  };
+
+  const setOpen = (open, focusBack = false) => {
+    toggle.setAttribute("aria-expanded", String(open));
+    panel.hidden = !open;
+    if (open) panel.querySelector("button").focus();
+    else if (focusBack) toggle.focus();
+  };
+
+  toggle.addEventListener("click", () => setOpen(panel.hidden));
+  box.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !panel.hidden) setOpen(false, true);
+  });
+  document.addEventListener("click", (e) => {
+    if (!panel.hidden && !box.contains(e.target)) setOpen(false);
+  });
+
+  box.addEventListener("click", (e) => {
+    const btn = e.target.closest("button");
+    if (!btn || btn === toggle) return;
+    const action = btn.dataset.a11y;
+    const key = btn.dataset.a11yToggle;
+    const i = SIZES.indexOf(state.size);
+    if (action === "close") return setOpen(false, true);
+    if (action === "bigger" && i < SIZES.length - 1) state.size = SIZES[i + 1];
+    if (action === "smaller" && i > 0) state.size = SIZES[i - 1];
+    if (action === "reset") state = { size: 100, on: [] };
+    if (key) {
+      if (state.on.includes(key)) state.on = state.on.filter((k) => k !== key);
+      else state.on = [...state.on.filter((k) => !(EXCLUSIVE.includes(key) && EXCLUSIVE.includes(k))), key];
+    }
+    if (!SIZES.includes(state.size)) state.size = 100;
+    apply();
+    save();
+  });
+
+  apply();
+}

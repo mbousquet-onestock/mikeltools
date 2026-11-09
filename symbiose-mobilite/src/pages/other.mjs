@@ -339,8 +339,22 @@ ${checklist([
   "Titres hiérarchisés, zones de page identifiées (en-tête, navigation, contenu, pied de page)",
   "Champs de formulaire associés à des étiquettes visibles et messages d’erreur explicites",
   "Respect de la préférence « réduire les animations » du système",
+  "Compatibilité avec les lecteurs d’écran (NVDA, JAWS, VoiceOver) : boutons et zones correctement nommés",
   "Mise en page adaptée à tous les écrans et au zoom jusqu’à 400 %",
 ])}
+<h2>Outils d’accessibilité</h2>
+<p>Le bouton rond situé en bas à droite de chaque page ouvre une barre d’outils permettant d’adapter l’affichage à vos besoins. Vos réglages sont mémorisés sur votre appareil pour les visites suivantes.</p>
+${checklist([
+  "<strong>Taille du texte</strong> : de 90 % à 200 %, la mise en page s’adapte",
+  "<strong>Niveaux de gris</strong>, pour les personnes sensibles aux couleurs",
+  "<strong>Haut contraste</strong> (noir sur blanc) et <strong>contraste négatif</strong> (blanc sur noir, liens en jaune), pour les personnes malvoyantes",
+  "<strong>Arrière-plan clair</strong>, pour limiter la fatigue visuelle",
+  "<strong>Liens soulignés</strong>, pour repérer les liens sans se fier à la couleur",
+  "<strong>Police lisible</strong>, plus adaptée aux personnes dyslexiques ou malvoyantes",
+  "<strong>Espacement du texte</strong> (interlignes, lettres et mots), selon le critère WCAG 1.4.12",
+  "<strong>Arrêt des animations</strong>, pour les personnes épileptiques ou sujettes aux vertiges",
+])}
+<p>Ces outils complètent les réglages de votre navigateur et de votre système (zoom, lecteur d’écran, mode sombre…), qui restent pleinement compatibles avec le site.</p>
 <h2>Retour d’information et contact</h2>
 <p>Si vous n’arrivez pas à accéder à un contenu ou à un service, contactez-nous à <a href="mailto:${SITE.email}">${SITE.email}</a> ou au <a href="tel:${SITE.phoneHref}">${SITE.phone}</a> : nous vous proposerons une alternative accessible.</p>
 <h2>Voies de recours</h2>

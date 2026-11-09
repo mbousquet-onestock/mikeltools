@@ -87,6 +87,7 @@ Les adresses des pages sont **identiques à l’ancien site** (`/relocation/`, `
 - Mentions légales restructurées (l’ancienne version comptait deux articles « 5 » et manquait d’informations obligatoires).
 - Accessibilité (RGAA / WCAG 2.2 AA, exigée par l’European Accessibility Act depuis juin 2025) : vrais libellés de formulaire (au lieu de simples textes d’exemple dans les champs), contrastes conformes, navigation au clavier, lien d’évitement, messages d’erreur explicites, déclaration d’accessibilité.
 - Noms complets des clients retirés des témoignages (prénom + initiale).
+- **Barre d’outils d’accessibilité** (bouton rond en bas à droite, comme sur l’ancien site, mais sans extension tierce) : taille du texte de 90 à 200 %, niveaux de gris, haut contraste, contraste négatif, arrière-plan clair, liens soulignés, police lisible, et deux outils ajoutés : espacement du texte (WCAG 1.4.12) et arrêt des animations. Utilisable au clavier et avec un lecteur d’écran, réglages mémorisés sur l’appareil (`src/static/js/a11y-init.js` et `main.js`).
 
 **Référencement (SEO)**
 - Title et meta description uniques et optimisés pour chaque page (l’accueil s’appelait « Accueil – Symbiose Mobilité »).
