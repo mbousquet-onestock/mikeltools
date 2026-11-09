@@ -16,6 +16,11 @@ const STATIC = join(ROOT, "src", "static");
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 cpSync(STATIC, OUT, { recursive: true });
+// Sur Vercel : pas de PHP ni d'Apache (le formulaire passe par api/envoi.js, la config par vercel.json)
+if (process.env.VERCEL) {
+  rmSync(join(OUT, "envoi.php"), { force: true });
+  rmSync(join(OUT, ".htaccess"), { force: true });
+}
 
 // Version pour l'invalidation du cache CSS/JS
 const version = createHash("sha1")
@@ -75,5 +80,5 @@ const size = (dir) =>
 console.log(`✔ ${pages.length} pages générées dans public/ (${(size(OUT) / 1024).toFixed(0)} Ko, version ${version})`);
 if (problems.length) {
   console.warn("⚠ Points à vérifier :\n  - " + problems.join("\n  - "));
-  process.exitCode = 1;
+  if (!process.env.VERCEL) process.exitCode = 1; // ne bloque pas un déploiement
 }

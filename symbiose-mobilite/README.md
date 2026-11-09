@@ -1,6 +1,6 @@
 # Symbiose Mobilité – refonte du site symbiose-mobilite.com
 
-Le site WordPress actuel est reconstruit en **site statique** : rapide, sûr, accessible et optimisé pour le référencement. La **charte graphique d’origine est conservée** : logo, bleu marine `#012E40`, vert `#04C045`, grands blocs aux coins arrondis, titres bicolores, boutons « pilule », photos et pictogrammes d’origine.
+Le site WordPress actuel est reconstruit en **site statique** hébergé sur **Vercel** : rapide, sûr, accessible et optimisé pour le référencement. La **charte graphique d’origine est conservée** : logo, bleu marine `#012E40`, vert `#04C045`, grands blocs aux coins arrondis, titres bicolores, boutons « pilule », photos et pictogrammes d’origine.
 
 ## Contenu du dossier
 
@@ -12,7 +12,8 @@ Le site WordPress actuel est reconstruit en **site statique** : rapide, sûr, ac
 | `src/site.mjs` | Gabarit commun (en-tête, pied de page, SEO, formulaire de contact) |
 | `src/static/` | CSS, JS, polices, images, `.htaccess`, `robots.txt`, `envoi.php`… |
 | `sources/` | Images d’origine (avant optimisation) |
-| `build.mjs` | Génère `public/` (Node 18+, aucune dépendance) |
+| `build.mjs` | Génère `public/` (Node 20+) |
+| `api/envoi.js`, `vercel.json` | Formulaires et configuration pour Vercel |
 | `scripts/optimize-images.py` | Convertit `sources/` en WebP responsives (Python + Pillow) |
 
 ## Modifier puis régénérer le site
@@ -33,7 +34,34 @@ Aperçu local :
 cd public && python3 -m http.server 8000
 ```
 
-## Mise en ligne (OVH mutualisé)
+## Mise en ligne sur Vercel (recommandé)
+
+Le projet est prêt pour Vercel : `vercel.json` (build, redirections, en-têtes de sécurité, cache) et `api/envoi.js` (envoi des formulaires par SMTP, en remplacement du script PHP).
+
+1. Sur [vercel.com/new](https://vercel.com/new), importer le dépôt GitHub `mbousquet-onestock/mikeltools`.
+2. **Root Directory** : `symbiose-mobilite` (le reste est lu dans `vercel.json`, ne rien changer d’autre).
+3. **Environment Variables** (pour les formulaires) :
+
+   | Variable | Valeur |
+   |---|---|
+   | `SMTP_USER` | adresse e-mail OVH servant à l’envoi, par ex. `contact@symbiose-mobilite.com` |
+   | `SMTP_PASS` | mot de passe de cette boîte |
+   | `SMTP_HOST` / `SMTP_PORT` | facultatif, par défaut `ssl0.ovh.net` / `465` |
+   | `MAIL_TO` | facultatif, destinataire (par défaut `contact@symbiose-mobilite.com`) |
+
+4. Cliquer sur **Deploy**, puis tester le site sur l’adresse `*.vercel.app` (formulaire de contact et enquête).
+5. **Domaine** : dans *Settings → Domains*, ajouter `symbiose-mobilite.com` et `www.symbiose-mobilite.com` (redirigé vers le domaine principal). Dans la zone DNS OVH, suivre les valeurs affichées par Vercel (en général un enregistrement `A` vers `76.76.21.21` pour `@`, et un `CNAME` vers `cname.vercel-dns.com` pour `www`). **Ne pas toucher aux enregistrements `MX`** : la messagerie reste chez OVH.
+6. Soumettre `https://symbiose-mobilite.com/sitemap.xml` dans Google Search Console.
+
+Chaque `git push` sur la branche de production redéploie automatiquement le site.
+
+Pour déployer en ligne de commande :
+
+```bash
+npx vercel@latest --cwd symbiose-mobilite
+```
+
+## Variante : mise en ligne sur OVH mutualisé
 
 1. Sauvegarder l’installation WordPress actuelle (fichiers + base de données).
 2. Remplacer le contenu du dossier `www/` par le contenu de `public/` (y compris le fichier caché `.htaccess`).

@@ -15,8 +15,8 @@ export const SITE = {
   city: "Pessac",
   region: "Nouvelle-Aquitaine",
   linkedin: "https://www.linkedin.com/company/symbiose-mobilit%C3%A9/",
-  // Point d'envoi des formulaires (script PHP fourni, compatible hébergement OVH mutualisé)
-  formAction: "/envoi.php",
+  // Point d'envoi des formulaires : fonction serverless sur Vercel, script PHP sur OVH
+  formAction: process.env.FORM_ACTION || (process.env.VERCEL ? "/api/envoi" : "/envoi.php"),
 };
 
 export const NAV = [

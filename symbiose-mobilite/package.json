@@ -1,0 +1,15 @@
+{
+  "name": "symbiose-mobilite",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "images": "python3 scripts/optimize-images.py"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "nodemailer": "6.10.1"
+  }
+}
